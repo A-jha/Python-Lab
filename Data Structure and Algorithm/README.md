@@ -117,4 +117,246 @@ Function of heapq
 
 - **go to priorqueue.py**
 
-##
+## Mapping Keys to Multiple Values in a Dictionary
+
+- A dictionary is a mapping where each key is mapped to a single value.
+- If you want to map keys to multiple values, you need to store the multiple values in another container such as a list or set.
+
+```python
+#using list
+d = {
+'a' : [1, 2, 3],
+'b' : [4, 5]
+}
+# using set
+e = {
+'a' : {1, 2, 3},
+'b' : {4, 5}
+}
+```
+
+- The choice of whether or not to use lists or sets depends on intended use.
+  - Use a list if you want to preserve the insertion order of the items.
+  - Use a set if you want to eliminate duplicates (and don’t care about the order).
+
+## defaultdict from collection
+
+### default dictionary with list
+
+```python
+from collections import defaultdict
+
+# Default dictionary with List of items
+d = defaultdict(list)
+# Here we have a as key and a list associated with it as pair.
+"""
+d = {
+    'a' = [1,2],
+    'b' = [4]
+}
+"""
+d['a'].append(1)
+d['a'].append(2)
+d['b'].append(4)
+print(d['a'])
+```
+
+### defaultdict with set
+
+```python
+d = defaultdict(set)
+d['a'].add(1)
+d['a'].add(2)
+d['b'].add(4)
+"""
+d = {
+'a' : {1, 2},
+'b' : {4}
+}
+"""
+```
+
+## Keeping dictionary in order
+
+To control the order of items in a dictionary, you can use an OrderedDict from the collections module.
+
+It exactly preserves the original insertion order of data when
+iterating.
+
+```python
+from collections import OrderedDict
+
+d = OrderedDict()
+
+d['avi'] = 1
+d['arp'] = 2
+d['sam'] = 3
+d['ravi'] = 4
+
+for key in d:
+    print(key, d[key])
+```
+
+- An OrderedDict can be particularly useful when you want to build a mapping that you may want to later serialize or encode into a different format.
+
+### Create a json file with dict
+
+```python
+import json
+from collections import OrderedDict
+
+d = OrderedDict()
+d['avi'] = 1
+d['ravi'] = 12
+d['kavi'] = 13
+d['davi'] = 145
+print(d)
+print(json.dumps(d))
+```
+
+Output :
+`OrderedDict([('avi', 1), ('ravi', 12), ('kavi', 13), ('davi', 145)])`<br>
+`{"avi": 1, "ravi": 12, "kavi": 13, "davi": 145}`
+
+## Calculating with dictionaries
+
+### zip()
+
+- it is often useful to invert the keys and values of the dictionary using zip() .
+- In zip(arg1,arg2)
+  - if we are sorting the sorted result will be based on arg1 not on arg2
+  - hence in this case to find minimu we have to palce prices.values() as first args.
+
+```Python
+min_price = min(zip(prices.values(), prices.keys()))
+print(min_price)
+```
+
+## Finding Commonalities in Two Dictionaries
+
+- Find common in two dictionaries.
+
+```python
+# find keys in common
+print(a.keys() & b.keys())
+# --->y, x is common
+
+# find keys in a that are not in b
+a.keys() - b.keys()
+# ---->z
+
+
+# find keys value pair in common
+print(a.items() & b.items())
+
+# make a new dictionaries with certain key removed
+c = {key: a[key] for key in a.keys()-{'z', 'w'}}
+print(c)
+
+```
+
+## Naming a Slice
+
+- slice take 3 args
+  - start - index to start slicing
+  - end - index to end slicing
+  - step - gap betwwn index
+
+```python
+items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+# Instead of doing manually we can set qa slic options
+print(items[2:4])
+
+# slice(start,end,step)
+
+# a sile [2:4]
+a = slice(2, 4)
+# b slice [4: ]
+b = slice(4, 8, 2)
+print(items[a])
+print(items[b])
+
+# here b is an instance of slice so we can perform
+# b.start
+# b.end
+# b.step
+
+```
+
+## Determining the Most Frequently Occurring Items in a Sequence
+
+- Counter is very usefull tool
+
+```Python
+from collections import Counter
+
+words = ['why', 'are', 'you', 'not', 'looking', 'in', 'my', 'eyes']
+# return a dictionaries with word as key and cont as value
+word_count = Counter(words)
+
+# top three most frequent words
+top_three = word_count.most_common(3)
+
+# update the word list
+morewords = ['why', 'are', 'you', 'not', 'looking', 'in', 'my', 'eyes']
+
+for word in morewords:
+    word_count[word] += 1
+
+# or we can update like
+word_count.update(morewords)
+
+#pop wiill remove that word from word_count dictionaries
+print(word_count.pop('why'))
+
+```
+
+## Sorting a List of Dictionaries by a Common Key :: itemgetter
+
+- itemgetter makes querying easy.
+
+```python
+from operator import itemgetter
+
+# Database
+rows = [
+    {'fname': 'Brian', 'lname': 'Jones', 'uid': 1003},
+    {'fname': 'David', 'lname': 'Beazley', 'uid': 1002},
+    {'fname': 'John', 'lname': 'Cleese', 'uid': 1001},
+    {'fname': 'Big', 'lname': 'Jones', 'uid': 1004}
+]
+
+# sort the table based on fname
+rows_by_fname = sorted(rows, key=itemgetter('fname'))
+print(rows_by_fname)
+```
+
+## Grouping Records Together Based on a Field
+
+The itertools.groupby() function is particularly useful for grouping data together.
+
+## Filtering Sequence Elements
+
+```python
+# some list needs special treatment for that we have
+# filter() function
+values = ['1', '2', '3', '-', '+', '*']
+
+# select all integer value
+
+
+def is_int(val):
+    try:
+        x = int(val)
+        return True
+    except ValueError:
+        return False
+
+
+# Now we have many way eithe we can use iterators or use filter() function
+ivals = list(filter(is_int, values))
+
+print(ivals)
+```
