@@ -87,3 +87,92 @@ no
 ```
 
 match() always tries to find the match at the start of a string. If you want to search text for all occurrences of a pattern, use the findall() method instead.
+
+## Searching and Replacing Text
+
+### str.replace() method
+
+```python
+text = 'yeah, but no, but yeah, but no, but yeah'
+text1 = text.replace('yeah', 'yep')
+```
+
+### use regular expression
+
+```python
+import re
+datepattern = re.compile(r'(\d+)/(\d+)/(\d+)')
+changed_pattern = datepattern.sub(r'\2-\3-\2', today)
+print(changed_pattern)
+#---> Output: today is 05-2021-05. my bday is 05-2021-05
+```
+
+## Searching and Replacing Case-Insensitive Text
+
+```Python
+text = 'UPPER PYTHON, lower python, Mixed Python'
+search_python = re.findall('python', text, flags=re.IGNORECASE)
+print(search_python)
+# -->Output: ['PYTHON', 'python', 'Python']
+```
+
+## Stripping Unwanted Characters from Strings
+
+The strip() method can be used to strip characters from the beginning or end of a string. lstrip() and rstrip() perform stripping from the left or right side, respectively.
+
+```Python
+# charecter striping
+t = '----------hello--------universe========'
+print(t)
+# -->Output:----------hello--------universe == == == ==
+strip_dash = t.strip('-')
+print(strip_dash)
+# -->Output:hello--------universe == == == ==
+strip_equlas = t.strip('=')
+print(strip_equlas)
+# -->Output:----------hello--------universe
+strip_dash_and_equals = t.strip('-=')
+print(strip_dash_and_equals)
+# -->Output:hello--------universe
+```
+
+## Sanitizing and Cleaning Up Text
+
+Some bored script kiddie has entered the text “pýtĥöñ” into a form on your web page and you’d like to clean it up somehow.
+
+```Python
+s = 'pýtĥöñ\fis\tawesome\r\n'
+print(s)
+# -->Output:pýtĥöñ
+#               is awesome
+remap = {
+    ord('\t'): " ",
+    ord('\f'): " ",
+    ord('\r'): None,  # deleted
+    ord('\n'): " ",
+}
+
+a = s.translate(remap)
+print(a)
+# -->Output:pýtĥöñ is awesome
+```
+
+## Aligning Text Strings
+
+For basic alignment of strings, the ljust() , rjust() , and center() methods of strings can be used.
+
+- **More detaile explanation go to 5-searching_and_replacing_text.py file**
+
+```python
+align_left = text.ljust(20, '-')
+print(align_left)
+# --> output: Hello Universe------
+align_right = text.rjust(20, '*')
+print(align_right)
+# --> otput:******Hello Universe
+align_center = text.center(20, '#')
+print(align_center)
+# --> Output: ###Hello Universe###
+```
+
+## Combining and Concatenating Strings
