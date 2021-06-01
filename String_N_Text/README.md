@@ -176,3 +176,44 @@ print(align_center)
 ```
 
 ## Combining and Concatenating Strings
+
+**join() method**:
+
+```Python
+# 1. Join method
+parts = ['Is', 'big', 'if', 'fat']
+space_sperated_combined_parts = ' '.join(parts)
+print(space_sperated_combined_parts)
+
+comma_saperated_join = ','.join(parts)
+print(comma_saperated_join)
+```
+
+## Interpolating Variables in Strings
+
+Python has no direct support for simply substituting variable values in strings. However, this feature can be approximated using the format() method of strings.
+
+```python
+# 1. interpolate string using format method
+message = '{name} has {n} messages...'
+new_message = message.format(name='Avinash', n=20)
+print(new_message)
+# ---> Avinash has 20 messages...
+```
+
+## Reformatting Text to a Fixed Number of Columns
+
+```python
+# 2. Intial indent
+print(textwrap.fill(s, 40, initial_indent='          '))
+"""
+Output:
+          Look into my eyes, look into
+my eyes, the eyes, the eyes, the eyes,
+not around the eyes, don't look around
+the eyes, look into my eyes, you're
+under.
+"""
+```
+
+## Tokenizing Text
