@@ -215,5 +215,3 @@ the eyes, look into my eyes, you're
 under.
 """
 ```
-
-## Tokenizing Text
