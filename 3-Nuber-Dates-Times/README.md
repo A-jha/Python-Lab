@@ -148,3 +148,67 @@ print(b)
 ```
 
 ## Calculating with Large Numerical Arrays
+
+For any heavy computation involving arrays, use the NumPy library. The major feature
+of NumPy is that it gives Python an array object that is much more efficient and better suited for mathematical calculation than a standard Python list.
+
+```Python
+# Python List
+x = [1, 2, 3, 4]
+y = [5, 6, 7, 8]
+
+# constant multiplication
+print(x*2)
+# ---> Output: [1, 2, 3, 4, 1, 2, 3, 4]
+
+# z = x+10
+# TypeError: can only concatenate list(not "int") to list
+
+z = x+y
+print(z)
+# --->Output:[1, 2, 3, 4, 5, 6, 7, 8]
+```
+
+- Here we can see that the array operations arte not proper mathematical.
+
+## [Numpy Array](http://www.numpy.org)
+
+NumPy provides a collection of “universal functions” that also allow for array operations.
+
+Under the covers, NumPy arrays are allocated in the same manner as in C or Fortran.
+Namely, they are large, contiguous memory regions consisting of a homogenous data
+type. Because of this, it’s possible to make arrays much larger than anything you would normally put into a Python list.
+
+```Python
+import numpy as np
+# Make a grid or 100 X 100 contains 0
+zero_grid = np.zeros(shape=(100, 100), dtype=float)
+print(zero_grid)
+"""
+Output:
+[[0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ ...
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]]
+"""
+```
+
+- One extremely notable aspect of NumPy is the manner in which it extends Python’s list indexing functionality—especially with multidimensional arrays.
+
+```Python
+# change sub region of an array
+a[1:3, 1:3] += 10
+print(a)
+"""
+Output:
+[[ 1  2  3  4]
+ [ 5 16 17  8]
+ [ 9 20 21 12]]
+"""
+```
+
+- Performing Linear algebra on matrix is a good application of numpy .
+  _Please visit 09-Numpy file_
