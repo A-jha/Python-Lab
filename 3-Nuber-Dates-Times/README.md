@@ -212,3 +212,7 @@ Output:
 
 - Performing Linear algebra on matrix is a good application of numpy .
   _Please visit 09-Numpy file_
+
+## Picking Things at Random
+
+- to pick a random item out of a sequence, use random.choice()
