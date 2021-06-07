@@ -5,7 +5,9 @@ matching line along with the previous N lines of context when found:
 """
 # maxlen = 3 means deque cna not have more than that
 q = deque(maxlen=3)
-# append(x) - add x to right side of deque
+
+
+# 1.append(x) - add x to right side of deque
 q.append(3)
 q.append(4)
 q.append(5)
@@ -15,21 +17,25 @@ q.append(6)
 print(q)
 # Output : [4,5,6]
 
-# appendleft(x) -add x to left side
+
+# 2.appendleft(x) -add x to left side
 q.appendleft(2)
 print(q)
 # Output :
 #  P: [2,4,5] D:[6]
 # ----------------->
 
-# Count(x) - no of element in deque euals to x
+
+# 3. Count(x) - no of digit x in deque euals to
 print(q.count(2))
 
-# copy() - copy a deque
+
+# 4.copy() - copy a deque
 p = q.copy()
 print(p)
 
-# extend(iterable) -Extend the right side
+
+# 5.extend(iterable) -Extend the right side
 #  of the deque by appending elements from the iterable argument.
 p.extend("Avinash")
 print(p)
@@ -40,6 +46,8 @@ print(p)
 # the order of elements in the iterable argument.
 p.extendleft("Avinash")
 print(p)
+# ---> Output: deque(['h', 's', 'a'], maxlen=3)
+
 
 # # insert(i,x) - insert X at position i
 # p.insert(2, "Z")

@@ -13,6 +13,7 @@ b = {
 # find keys in common
 print(a.keys() & b.keys())
 # --->y, x is common
+# ---> Output:{'x', 'y'}
 
 # find keys in a that are not in b
 a.keys() - b.keys()
@@ -21,7 +22,8 @@ a.keys() - b.keys()
 
 # find keys value pair in common
 print(a.items() & b.items())
-
+# ---> Output:{('y', 2)}
 # make a new dictionaries with certain key removed
 c = {key: a[key] for key in a.keys()-{'z', 'w'}}
 print(c)
+# ---> Output: {'x': 1, 'y': 2}

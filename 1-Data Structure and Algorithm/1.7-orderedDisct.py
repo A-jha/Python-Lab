@@ -9,3 +9,10 @@ d['ravi'] = 4
 
 for key in d:
     print(key, d[key])
+"""
+Output:
+avi 1
+arp 2
+sam 3
+ravi 4
+"""
