@@ -216,3 +216,34 @@ Output:
 ## Picking Things at Random
 
 - to pick a random item out of a sequence, use random.choice()
+
+```python
+import random
+
+# Rnadom basic
+random_floating_num = random.random()
+print(random_floating_num)
+# ---> 0.9406677561675867
+
+# get an int between 0 to 10
+print(math.floor(random_floating_num*10))
+# ---> 9
+```
+
+## Converting Days to Seconds, and Other Basic Time Conversions
+
+### Timedelta
+
+o perform conversions and arithmetic involving different units of time, use the date time module. For example, to represent an interval of time, create a timedelta instance.
+
+```Python
+from datetime import timedelta
+
+a = timedelta(days=2, hours=6)
+b = timedelta(hours=4.5)
+c = a+b
+print(c)
+# ---> Output: 2 days, 10: 30: 00
+```
+
+### datetime
